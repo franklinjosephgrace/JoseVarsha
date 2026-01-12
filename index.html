@@ -1,0 +1,153 @@
+<html showHeader="false" sidebar="false">
+      <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        .header {
+            background-color: #fc7b92;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        	font-family: cursive;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .biodata {
+            flex: 1 1 300px;
+            min-width: 280px;
+        }
+
+        .biodata label {
+        	font-family: cursive;
+            font-weight: bold;
+            display: inline-block;
+            width: 140px;
+            color: #34495e;
+          	padding-left: 64px;
+          	padding-bottom: 2px;
+        }
+
+        .biodata p {
+        	font-family: cursive;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .photo {
+            flex: 0 0 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          	padding: 10px 50px 10px 10px;
+		}
+
+        .photo img {
+            width: 85%;
+            height: 420px; 
+            object-fit: fill; 
+            border-radius: 16px;
+            border: 4px solid #fc7b92;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media screen and (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px;
+            }
+
+            .biodata label {
+                width: 120px;
+            }
+
+            .header {
+                font-size: 22px;
+                padding: 15px 8px;
+            }
+
+            .photo img {
+                max-width: 200px;
+            }
+        }
+    </style>
+
+    <div class="header">
+        💛💙💛 Welcome Janzalina Jose 💛💙💛
+    </div>
+
+    <div class="container">
+        <div class="biodata">
+            <p><label>Baby Name:</label> Janzalina Jose</p>
+            <p><label>Gender:</label> Female</p>
+            <p><label>Date of Birth:</label> <span id="dob">23 May 2025</span></p>
+            <p><label>Age:</label> <span id="calculatedAge">Calculating...</span></p>
+            <p><label>Timing:</label> 09:21 PM</p>
+            <p><label>Blood Group:</label> O+</p>
+            <p><label>Height:</label> 49 cm</p>
+            <p><label>Weight:</label> 3.240 kg</p>
+            <p><label>Father's Name:</label> Herbart Jose</p>
+            <p><label>Mother's Name:</label> Bernath Varsha</p>
+            <p><label>Baptism Father:</label> Emmanuvel Ugin</p>
+            <p><label>Baptism Mother:</label> Mariya Axiliya</p>
+            <p><label>Baptism Priest:</label> Rev. Fr. Ravi Joseph</p>
+            <p><label>Date of Baptism:</label> <span id="dob">08 June 2025</span></p>
+            <p><label>Place of Birth:</label> Saveetha Medical Hospital, Chennai</p>
+        </div>
+
+        <div class="photo">
+            <img src="{!URLFOR($Resource.JoseVarsha)}" alt="Baby Photo" title="Jose&Varsha" />
+        </div>
+    </div>
+    
+    <div class="header">
+        💛💙💛 Thank You..! 💛💙💛
+    </div>
+
+    <script>
+        function calculateAge(dobString) {
+            const dob = new Date(dobString);
+            const today = new Date();
+
+            let years = today.getFullYear() - dob.getFullYear();
+            let months = today.getMonth() - dob.getMonth();
+            let days = today.getDate() - dob.getDate();
+
+            if (days < 0) {
+                months--;
+                const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            return `${years} Years, ${months} Months, ${days} Days`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const dob = "2025-05-23"; // Set your actual DOB here
+            const ageText = calculateAge(dob);
+            document.getElementById("calculatedAge").innerText = ageText;
+        });
+    </script>
+</html>
